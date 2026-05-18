@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Debug</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body{ font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; background:#f4f6f8; margin:0; }
+        .card{ background:white; padding:30px; width:320px; border-radius:10px; box-shadow:0 5px 20px rgba(0,0,0,0.1); }
+        input{ width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px; box-sizing: border-box; }
+        button{ width:100%; padding:12px; background:#2563eb; color:white; border:none; cursor:pointer; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Login</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="handleLogin()">Sign in</button>
+        <div id="error-msg" style="color:red; margin-top:10px; font-size:12px;"></div>
+    </div>
+
+    <script>
+        const supabaseAuth = window.supabase.createClient(
+            "https://nwfidbulykczpudzpwnr.supabase.co",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53ZmlkYnVseWtjenB1ZHpwd25yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAxMTM5MzAsImV4cCI6MjA4NTY4OTkzMH0.JP033Ta2OvdO6tzTODmMSSAuOyy6meUypcjtddJGlNI"
+        );
+
+        async function handleLogin() {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const errorDiv = document.getElementById("error-msg");
+
+            console.log("Tentative de connexion pour:", email);
+
+            const { data, error } = await supabaseAuth.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                console.error("Erreur Supabase:", error);
+                errorDiv.innerText = "Erreur: " + error.message;
+                return;
+            }
+
+            // --- MODIFICATION : Récupération du rôle dans la table utilisateurs ---
+            try {
+                const { data: profile, error: roleError } = await supabaseAuth
+                    .from('utilisateurs')
+                    .select('role')
+                    .eq('email', email)
+                    .single();
+
+                if (profile) {
+                    localStorage.setItem('userRole', profile.role);
+                } else {
+                    localStorage.setItem('userRole', 'User');
+                }
+            } catch (e) {
+                localStorage.setItem('userRole', 'User');
+            }
+            // -----------------------------------------------------------------------
+
+            console.log("Succès ! Redirection...");
+            window.location.href = "dash_final.html";
+        }
+    </script>
+</body>
+</html>

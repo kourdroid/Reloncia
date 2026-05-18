@@ -1,0 +1,16 @@
+{
+  "Index": {
+    "title": "منصة تحصيل الديون"
+  },
+  "Dashboard": {
+    "totalUnpaid": "إجمالي غير المدفوع",
+    "overdue30Count": "تأخير > 30 يوم",
+    "legalRiskCount": "خطر قانوني (قانون 69-21)",
+    "topLateClients": "أهم العملاء المتأخرين",
+    "clientName": "العميل",
+    "amount": "المبلغ الإجمالي",
+    "dueDate": "تاريخ الاستحقاق",
+    "noLateClients": "لا يوجد عملاء متأخرين",
+    "agingBalance": "ميزان أعمار الديون"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "Index": {
+    "title": "Plateforme de Recouvrement"
+  },
+  "Dashboard": {
+    "totalUnpaid": "Total Impayé",
+    "overdue30Count": "Retards > 30 jours",
+    "legalRiskCount": "Risque Légal (Loi 69-21)",
+    "topLateClients": "Top Clients en Retard",
+    "clientName": "Client",
+    "amount": "Montant TTC",
+    "dueDate": "Date d'échéance",
+    "noLateClients": "Aucun client en retard",
+    "agingBalance": "Balance Âgée"
+  }
+}

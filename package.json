@@ -1,0 +1,51 @@
+{
+  "name": "efacturation-ar-recovery",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "test:rls": "pg_prove tests/rls/*.test.sql"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@react-pdf/renderer": "^4.5.0",
+    "@supabase/ssr": "^0.5.1",
+    "@supabase/supabase-js": "^2.45.0",
+    "@tanstack/react-query": "^5.100.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.450.0",
+    "next": "16.2.6",
+    "next-intl": "^4.12.0",
+    "papaparse": "^5.4.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-hook-form": "^7.53.0",
+    "recharts": "^2.13.0",
+    "resend": "^4.0.0",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7",
+    "xlsx": "^0.18.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^20",
+    "@types/papaparse": "^5.3.14",
+    "@types/react": "19.2.6",
+    "@types/react-dom": "19.2.6",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "prettier": "^3.3.3",
+    "tailwindcss": "4.3.0",
+    "typescript": "^5",
+    "vitest": "^2.1.0"
+  }
+}
