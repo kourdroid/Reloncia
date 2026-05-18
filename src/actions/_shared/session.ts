@@ -1,5 +1,5 @@
 import { createClient } from "../../supabase/server";
-import { DomainError, ErrorCodes } from "../services/errors";
+import { DomainError, ErrorCodes } from "../../services/errors";
 
 export async function requireUserSession() {
   const supabase = await createClient();

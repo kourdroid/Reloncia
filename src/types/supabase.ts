@@ -12,10 +12,55 @@ export interface Database {
       invoices: {
         Row: {
           id: string
-          // ... placeholder
+          tenant_id: string
+          client_id: string
+          invoice_number: string
+          amount_ttc: number
+          due_date: string
+          status: string
+          law_69_21_flag: boolean
+          legal_threshold_date: string | null
+          clients?: { name: string }
         }
       }
-      // ... placeholder
+      clients: {
+        Row: {
+          id: string
+          name: string
+          tenant_id: string
+        }
+      }
+      tenants: {
+        Row: {
+          id: string
+          cabinet_id: string
+          name: string
+        }
+      }
+      users: {
+        Row: {
+          id: string
+          role: string
+        }
+      }
+      audit_logs: {
+        Row: {
+          id: string
+          action: string
+          entity: string
+          entityId: string
+          userId: string
+          metadata: Json
+        }
+      }
+      reminders: {
+        Row: {
+          id: string
+          tenant_id: string
+          invoice_id: string
+          status: string
+        }
+      }
     }
   }
 }

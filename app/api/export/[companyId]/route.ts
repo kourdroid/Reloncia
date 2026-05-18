@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "../../../../src/supabase/server";
+import { createClient } from "../../../../src/supabase/server";
 import { generateMonthlyReport } from "../../../../src/services/monthly-report.service";
-import { createAuditLog } from "../../../../src/services/audit.service";
+import { logAuditAction } from "../../../../src/services/audit.service";
 
 /**
  * GET /api/export/[companyId]?month=5&year=2026
@@ -13,9 +13,9 @@ import { createAuditLog } from "../../../../src/services/audit.service";
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { companyId: string } }
+  { params }: { params: Promise<{ companyId: string }> }
 ) {
-  const { companyId } = params;
+  const { companyId } = await params;
   const searchParams = request.nextUrl.searchParams;
 
   const monthParam = searchParams.get("month");
@@ -41,7 +41,7 @@ export async function GET(
   }
 
   // Get authenticated user
-  const supabase = await createServerClient();
+  const supabase = await createClient();
   const {
     data: { user },
     error: authError,
@@ -61,12 +61,15 @@ export async function GET(
     });
 
     // Audit log: record report generation
-    await createAuditLog({
+    await logAuditAction(supabase, {
+      tenantId: companyId,
+      actorProfileId: user.id,
       action: "report_generated",
-      entity: "report",
-      entityId: `${companyId}/${year}-${month}`,
-      userId: user.id,
-      metadata: { companyId, month, year, expiresAt: result.expiresAt },
+      targetTable: "reports",
+      targetId: `${companyId}/${year}-${month}`,
+      beforeJson: null,
+      afterJson: null,
+      metadataJson: { companyId, month, year, expiresAt: result.expiresAt },
     });
 
     return NextResponse.json({
