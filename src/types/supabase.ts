@@ -62,5 +62,23 @@ export interface Database {
         }
       }
     }
+    Views: Record<string, never>
+    Functions: {
+      create_audit_log: {
+        Args: {
+          p_tenant_id: string
+          p_actor_profile_id: string
+          p_action: string
+          p_target_table: string
+          p_target_id: string
+          p_before_json?: Json
+          p_after_json?: Json
+          p_metadata_json?: Json
+        }
+        Returns: string
+      }
+    }
+    Enums: Record<string, never>
+    CompositeTypes: Record<string, never>
   }
 }

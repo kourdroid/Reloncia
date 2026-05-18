@@ -1,5 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { Database } from "../types/supabase";
+import { Database, Json } from "../types/supabase";
 
 export type CreateAuditLogParams = {
   tenantId: string;
@@ -7,9 +7,9 @@ export type CreateAuditLogParams = {
   action: string;
   targetTable: string;
   targetId: string;
-  beforeJson?: any;
-  afterJson?: any;
-  metadataJson?: any;
+  beforeJson?: Json;
+  afterJson?: Json;
+  metadataJson?: Json;
 };
 
 export async function insertAuditLog(client: SupabaseClient<Database>, params: CreateAuditLogParams) {
