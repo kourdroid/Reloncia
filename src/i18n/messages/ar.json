@@ -11,6 +11,60 @@
     "amount": "المبلغ الإجمالي",
     "dueDate": "تاريخ الاستحقاق",
     "noLateClients": "لا يوجد عملاء متأخرين",
-    "agingBalance": "ميزان أعمار الديون"
+    "agingBalance": "ميزان أعمار الديون",
+    "legalRiskAlertTitle": "تنبيهات الخطر القانوني — القانون 69-21",
+    "legalRiskAlertSubtitle": "هذه الفواتير تقترب أو تجاوزت أجل الدفع القانوني البالغ 60 يوماً.",
+    "invoice": "فاتورة",
+    "invoices": "فواتير",
+    "thresholdExceeded": "تجاوز الأجل",
+    "daysRemaining": "ي-{days}"
+  },
+  "Reminders": {
+    "send": "إرسال تذكير",
+    "channel": "القناة",
+    "email": "البريد الإلكتروني",
+    "whatsapp": "واتساب",
+    "messageTemplate": "نموذج الرسالة",
+    "history": "سجل التذكيرات",
+    "noHistory": "لم يتم إرسال أي تذكير",
+    "sentAt": "أُرسل في",
+    "status": "الحالة",
+    "delivered": "تم التسليم",
+    "failed": "فشل",
+    "bounced": "مرتد"
+  },
+  "Invoices": {
+    "invoiceNumber": "رقم الفاتورة",
+    "status": "الحالة",
+    "amount": "المبلغ الإجمالي",
+    "dueDate": "الاستحقاق",
+    "clientName": "العميل",
+    "legalRisk": "خطر قانوني",
+    "aging0to30": "0-30 يوم",
+    "aging31to60": "31-60 يوم",
+    "aging61to90": "61-90 يوم",
+    "aging90plus": "أكثر من 90 يوم"
+  },
+  "Imports": {
+    "upload": "استيراد ملف",
+    "dropzone": "اسحب وأفلت ملف Excel أو CSV هنا",
+    "mapColumns": "مطابقة الأعمدة",
+    "review": "مراجعة قبل التأكيد",
+    "confirm": "تأكيد الاستيراد",
+    "cancel": "إلغاء",
+    "duplicates": "تم اكتشاف مكررات",
+    "errors": "صفوف غير صالحة",
+    "validRows": "صفوف صالحة",
+    "importSuccess": "تم الاستيراد بنجاح",
+    "importError": "خطأ أثناء الاستيراد"
+  },
+  "Reports": {
+    "generate": "إنشاء التقرير الشهري",
+    "generating": "جارٍ الإنشاء...",
+    "download": "تحميل",
+    "month": "الشهر",
+    "year": "السنة",
+    "reportReady": "التقرير جاهز",
+    "reportError": "خطأ أثناء الإنشاء"
   }
 }

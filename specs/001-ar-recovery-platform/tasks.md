@@ -141,22 +141,22 @@ description: "Task list for eFacturation accounts receivable recovery platform"
 
 ### Tests for User Story 3
 
-- [ ] T067 [P] [US3] Add RLS test for reminder and reminder event access in `tests/rls/reminder-events.test.sql`
-- [ ] T068 [P] [US3] Add Server Action test for reminder authorization and audit logging in `tests/integration/send-reminder.action.test.ts`
-- [ ] T069 [P] [US3] Add n8n webhook contract test for reminder_sent events in `tests/integration/n8n-reminder-webhook.test.ts`
-- [ ] T070 [P] [US3] Add E2E test for selecting invoices and sending reminders in `tests/e2e/send-reminder.spec.ts`
+- [X] T067 [P] [US3] Add RLS test for reminder and reminder event access in `tests/rls/reminder-events.test.sql`
+- [X] T068 [P] [US3] Add Server Action test for reminder authorization and audit logging in `tests/integration/send-reminder.action.test.ts`
+- [X] T069 [P] [US3] Add n8n webhook contract test for reminder_sent events in `tests/integration/n8n-reminder-webhook.test.ts`
+- [X] T070 [P] [US3] Add E2E test for selecting invoices and sending reminders in `tests/e2e/send-reminder.spec.ts`
 
 ### Implementation for User Story 3
 
-- [ ] T071 [US3] Implement reminder repositories in `src/repositories/reminder.repository.ts`
-- [ ] T072 [US3] Implement reminder sending service with Resend provider boundary in `src/services/reminder.service.ts`
-- [ ] T073 [US3] Implement sendReminder Server Action in `src/actions/send-reminder.ts`
-- [ ] T074 [US3] Implement n8n webhook route for reminder_sent callbacks in `app/api/webhooks/n8n/route.ts`
-- [ ] T075 [US3] Implement reminder selection toolbar in `components/features/reminders/reminder-action-toolbar.tsx`
-- [ ] T076 [US3] Implement reminder history table in `components/features/reminders/reminder-history-table.tsx`
-- [ ] T077 [US3] Implement reminder history page in `app/[locale]/dashboard/[companyId]/reminders/page.tsx`
-- [ ] T078 [US3] Add French and Arabic reminder labels/templates in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
-- [ ] T079 [US3] Document n8n reminder workflow setup in `specs/001-ar-recovery-platform/contracts/n8n-webhooks.md`
+- [X] T071 [US3] Implement reminder repositories in `src/repositories/reminder.repository.ts`
+- [X] T072 [US3] Implement reminder sending service with Resend provider boundary in `src/services/reminder.service.ts`
+- [X] T073 [US3] Implement sendReminder Server Action in `src/actions/send-reminder.ts`
+- [X] T074 [US3] Implement n8n webhook route for reminder_sent callbacks in `app/api/webhooks/n8n/route.ts`
+- [X] T075 [US3] Implement reminder selection toolbar in `components/features/reminders/reminder-action-toolbar.tsx`
+- [X] T076 [US3] Implement reminder history table in `components/features/reminders/reminder-history-table.tsx`
+- [X] T077 [US3] Implement reminder history page in `app/[locale]/dashboard/[companyId]/reminders/page.tsx`
+- [X] T078 [US3] Add French and Arabic reminder labels/templates in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
+- [X] T079 [US3] Document n8n reminder workflow setup in `specs/001-ar-recovery-platform/contracts/n8n-webhooks.md`
 
 **Checkpoint**: Reminder sending is auditable, tenant-scoped, and not dependent on n8n as a CRUD backend.
 
@@ -170,23 +170,23 @@ description: "Task list for eFacturation accounts receivable recovery platform"
 
 ### Tests for User Story 4
 
-- [ ] T080 [P] [US4] Add RLS test for import job and import row tenant access in `tests/rls/import-jobs.test.sql`
-- [ ] T081 [P] [US4] Add parser test for inconsistent Excel and CSV headers in `tests/unit/import-parser.service.test.ts`
-- [ ] T082 [P] [US4] Add import confirmation integration test in `tests/integration/confirm-import.action.test.ts`
-- [ ] T083 [P] [US4] Add E2E test for import mapping and confirmation flow in `tests/e2e/import-invoices.spec.ts`
+- [X] T080 [P] [US4] Add RLS test for import job and import row tenant access in `tests/rls/import-jobs.test.sql`
+- [X] T081 [P] [US4] Add parser test for inconsistent Excel and CSV headers in `tests/unit/import-parser.service.test.ts`
+- [X] T082 [P] [US4] Add import confirmation integration test in `tests/integration/confirm-import.action.test.ts`
+- [X] T083 [P] [US4] Add E2E test for import mapping and confirmation flow in `tests/e2e/import-invoices.spec.ts`
 
 ### Implementation for User Story 4
 
-- [ ] T084 [US4] Implement import repositories in `src/repositories/import.repository.ts`
-- [ ] T085 [US4] Implement Excel/CSV parser and column mapping service in `src/services/import-parser.service.ts`
-- [ ] T086 [US4] Implement import validation and deduplication service in `src/services/import-validation.service.ts`
-- [ ] T087 [US4] Implement createImportJob, saveImportMapping, and confirmImportRows Server Actions in `src/actions/import-invoices.ts`
-- [ ] T088 [US4] Implement import upload component in `components/features/imports/import-upload.tsx`
-- [ ] T089 [US4] Implement column mapping UI in `components/features/imports/column-mapping-table.tsx`
-- [ ] T090 [US4] Implement import review grid in `components/features/imports/import-review-table.tsx`
-- [ ] T091 [US4] Implement import page in `app/[locale]/dashboard/[companyId]/imports/page.tsx`
-- [ ] T092 [US4] Add private imports bucket policy notes in `supabase/policies/storage-imports.sql`
-- [ ] T093 [US4] Add French and Arabic import labels in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
+- [X] T084 [US4] Implement import repositories in `src/repositories/import.repository.ts`
+- [X] T085 [US4] Implement Excel/CSV parser and column mapping service in `src/services/import-parser.service.ts`
+- [X] T086 [US4] Implement import validation and deduplication service in `src/services/import-validation.service.ts`
+- [X] T087 [US4] Implement createImportJob, saveImportMapping, and confirmImportRows Server Actions in `src/actions/import-invoices.ts`
+- [X] T088 [US4] Implement import upload component in `components/features/imports/import-upload.tsx`
+- [X] T089 [US4] Implement column mapping UI in `components/features/imports/column-mapping-table.tsx`
+- [X] T090 [US4] Implement import review grid in `components/features/imports/import-review-table.tsx`
+- [X] T091 [US4] Implement import page in `app/[locale]/dashboard/[companyId]/imports/page.tsx`
+- [X] T092 [US4] Add private imports bucket policy notes in `supabase/policies/storage-imports.sql`
+- [X] T093 [US4] Add French and Arabic import labels in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
 
 **Checkpoint**: Import flow centralizes invoice data without autonomous AI writes or silent duplicate skips.
 
@@ -200,21 +200,21 @@ description: "Task list for eFacturation accounts receivable recovery platform"
 
 ### Tests for User Story 5
 
-- [ ] T094 [P] [US5] Add SQL test for deterministic Law 69-21 legal-risk evaluation in `tests/rls/law-69-21-risk.test.sql`
-- [ ] T095 [P] [US5] Add service test for responsible-user alert targeting in `tests/unit/deadline-alert.service.test.ts`
-- [ ] T096 [P] [US5] Add n8n deadline_alert webhook contract test in `tests/integration/n8n-deadline-alert-webhook.test.ts`
-- [ ] T097 [P] [US5] Add E2E test for legal-risk dashboard indicators in `tests/e2e/legal-risk-alerts.spec.ts`
+- [X] T094 [P] [US5] Add SQL test for deterministic Law 69-21 legal-risk evaluation in `tests/rls/law-69-21-risk.test.sql`
+- [X] T095 [P] [US5] Add service test for responsible-user alert targeting in `tests/unit/deadline-alert.service.test.ts`
+- [X] T096 [P] [US5] Add n8n deadline_alert webhook contract test in `tests/integration/n8n-deadline-alert-webhook.test.ts`
+- [X] T097 [P] [US5] Add E2E test for legal-risk dashboard indicators in `tests/e2e/legal-risk-alerts.spec.ts`
 
 ### Implementation for User Story 5
 
-- [ ] T098 [US5] Implement legal-risk database helper and scheduled escalation function in `supabase/functions/law_69_21_risk.sql`
-- [ ] T099 [US5] Implement deadline alert repository in `src/repositories/deadline-alert.repository.ts`
-- [ ] T100 [US5] Implement deadline alert service in `src/services/deadline-alert.service.ts`
-- [ ] T101 [US5] Extend n8n webhook route for deadline_alert events in `app/api/webhooks/n8n/route.ts`
-- [ ] T102 [US5] Implement legal-risk badges and alert panel in `components/features/dashboard/legal-risk-alerts.tsx`
-- [ ] T103 [US5] Implement legal-risk query integration in `src/services/hooks/use-dashboard-summary.ts`
-- [ ] T104 [US5] Document daily_deadline_scan and invoice_status_escalation workflows in `specs/001-ar-recovery-platform/contracts/n8n-webhooks.md`
-- [ ] T105 [US5] Add French and Arabic legal-risk labels in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
+- [X] T098 [US5] Implement legal-risk database helper and scheduled escalation function in `supabase/functions/law_69_21_risk.sql`
+- [X] T099 [US5] Implement deadline alert repository in `src/repositories/deadline-alert.repository.ts`
+- [X] T100 [US5] Implement deadline alert service in `src/services/deadline-alert.service.ts`
+- [X] T101 [US5] Extend n8n webhook route for deadline_alert events in `app/api/webhooks/n8n/route.ts`
+- [X] T102 [US5] Implement legal-risk badges and alert panel in `components/features/dashboard/legal-risk-alerts.tsx`
+- [X] T103 [US5] Implement legal-risk query integration in `src/services/hooks/use-dashboard-summary.ts`
+- [X] T104 [US5] Document daily_deadline_scan and invoice_status_escalation workflows in `specs/001-ar-recovery-platform/contracts/n8n-webhooks.md`
+- [X] T105 [US5] Add French and Arabic legal-risk labels in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
 
 **Checkpoint**: Legal-risk signals are deterministic, visible, and routed through audited/background-safe paths.
 

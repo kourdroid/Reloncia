@@ -1,6 +1,6 @@
 {
   "Index": {
-    "title": "Plateforme de Recouvrement"
+    "title": "Plateforme de Recouvrement AR"
   },
   "Dashboard": {
     "totalUnpaid": "Total Impayé",
@@ -11,6 +11,60 @@
     "amount": "Montant TTC",
     "dueDate": "Date d'échéance",
     "noLateClients": "Aucun client en retard",
-    "agingBalance": "Balance Âgée"
+    "agingBalance": "Balance Âgée",
+    "legalRiskAlertTitle": "Alertes Risque Légal — Loi 69-21",
+    "legalRiskAlertSubtitle": "Ces factures approchent ou ont dépassé le délai légal de paiement de 60 jours.",
+    "invoice": "facture",
+    "invoices": "factures",
+    "thresholdExceeded": "Dépassé",
+    "daysRemaining": "J-{days}"
+  },
+  "Reminders": {
+    "send": "Envoyer un rappel",
+    "channel": "Canal",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp",
+    "messageTemplate": "Modèle de message",
+    "history": "Historique des rappels",
+    "noHistory": "Aucun rappel envoyé",
+    "sentAt": "Envoyé le",
+    "status": "Statut",
+    "delivered": "Remis",
+    "failed": "Échoué",
+    "bounced": "Rejeté"
+  },
+  "Invoices": {
+    "invoiceNumber": "N° Facture",
+    "status": "Statut",
+    "amount": "Montant TTC",
+    "dueDate": "Échéance",
+    "clientName": "Client",
+    "legalRisk": "Risque Légal",
+    "aging0to30": "0-30 jours",
+    "aging31to60": "31-60 jours",
+    "aging61to90": "61-90 jours",
+    "aging90plus": "90+ jours"
+  },
+  "Imports": {
+    "upload": "Importer un fichier",
+    "dropzone": "Déposez votre fichier Excel ou CSV ici",
+    "mapColumns": "Correspondance des colonnes",
+    "review": "Révision avant confirmation",
+    "confirm": "Confirmer l'import",
+    "cancel": "Annuler",
+    "duplicates": "Doublons détectés",
+    "errors": "Lignes invalides",
+    "validRows": "Lignes valides",
+    "importSuccess": "Import confirmé avec succès",
+    "importError": "Erreur lors de l'import"
+  },
+  "Reports": {
+    "generate": "Générer le rapport mensuel",
+    "generating": "Génération en cours...",
+    "download": "Télécharger",
+    "month": "Mois",
+    "year": "Année",
+    "reportReady": "Rapport prêt",
+    "reportError": "Erreur lors de la génération"
   }
 }
