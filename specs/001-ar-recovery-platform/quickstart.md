@@ -133,10 +133,36 @@ business records.
 
 ## 7. Acceptance Smoke Test
 
-1. Login as CabinetAdmin.
-2. Open dashboard and confirm unpaid total, overdue >30 count, legal-risk count, and top late clients.
-3. Drill into one company and verify aging buckets.
-4. Send one email reminder and confirm reminder/audit history.
-5. Upload a sample Excel file, map columns, validate rows, and confirm import.
-6. Generate a monthly report and open the signed URL.
-7. Login as unauthorized tenant user and verify the same data is inaccessible.
+This smoke test validates the complete MVP feature slice. Run against a Supabase local instance seeded with `019_seed.sql`.
+
+### Pre-Test: Seed Verification
+
+```bash
+supabase db reset --local
+supabase db push --local
+```
+
+Confirm seed loaded: 1 cabinet, 3 tenants, 3 cabinet users, 2 independent tenants, 50 clients, 500 invoices.
+
+### Test Steps
+
+1. **Dashboard (US1)**: Login as CabinetAdmin. Verify unpaid total, overdue >30 count, legal-risk count, and top 5 late clients appear. Verify non-delegated company data is absent.
+2. **Company Aging (US2)**: Drill into one company. Verify invoices are grouped into 0-30, 31-60, 60+ day buckets with MAD subtotals.
+3. **Reminder Sending (US3)**: Select 2 unpaid invoices. Send email reminder. Confirm reminder event appears in history, invoice reminder count incremented, and audit log created.
+4. **Excel Import (US4)**: Upload `sample-invoices.xlsx`. Map columns. Verify validation results. Confirm valid rows. Verify imported invoices appear in company view.
+5. **Legal Risk Alerts (US5)**: Verify at-risk invoices (≤10 days to threshold) appear in dashboard alert panel with `J-N` countdown badges.
+6. **Monthly Report (US6)**: Navigate to company Reports tab. Select month/year. Click Generate. Open signed URL. Verify PDF contains unpaid summary, aging breakdown, and legal-risk section.
+7. **Cross-Tenant Isolation**: Login as an unauthorized tenant user. Attempt to access another company's dashboard route. Verify 403 or redirect.
+
+### Expected Outcomes
+
+- ✅ Cabinet dashboard excludes non-delegated companies
+- ✅ TenantAdmin sees only own company
+- ✅ ReadOnly role cannot mutate any data
+- ✅ Invoice status transitions reject invalid sequences
+- ✅ Reminder send creates reminder event and audit log
+- ✅ Import confirmation writes invoices only after user-confirmed validation
+- ✅ Legal-risk flags are deterministic (computed by DB trigger, not n8n)
+- ✅ Report generation creates a private signed URL (1-hour expiry) and audit log
+- ✅ n8n callbacks received at /api/webhooks/n8n update state correctly
+- ✅ No sensitive data (role, tenantId, session) found in browser localStorage

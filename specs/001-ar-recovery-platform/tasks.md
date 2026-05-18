@@ -252,18 +252,18 @@ description: "Task list for eFacturation accounts receivable recovery platform"
 
 **Purpose**: Validate the full product slice, documentation, rollback safety, localization, and constitutional constraints.
 
-- [ ] T118 [P] Validate quickstart smoke test and update `specs/001-ar-recovery-platform/quickstart.md`
-- [ ] T119 Run all migration rollback validations and record results in `supabase/migrations/README.md`
-- [ ] T120 Run full tenant-isolation and authorization test suite in `tests/rls/`
-- [ ] T121 Run full integration test suite in `tests/integration/`
-- [ ] T122 Run full Playwright suite in `tests/e2e/`
-- [ ] T123 Run typecheck, lint, and formatting checks through `package.json`
-- [ ] T124 Verify no direct Supabase client calls exist outside `src/services/`, `src/repositories/`, `src/actions/`, `src/supabase/`, and `app/api/` using `tests/integration/no-ui-supabase-calls.test.ts`
-- [ ] T125 Verify no role, tenant, cabinet, entitlement, or session state is persisted in localStorage using `tests/e2e/no-sensitive-localstorage.spec.ts`
-- [ ] T126 Verify n8n is not used as a synchronous CRUD backend using `tests/integration/no-n8n-crud.test.ts`
-- [ ] T127 Capture desktop and mobile screenshots for dashboard, invoice list, import flow, reminders, legal-risk alerts, and reports in `tests/e2e/screenshots/`
-- [ ] T128 Complete Arabic RTL review for all critical workflows in `src/i18n/messages/ar.json`
-- [ ] T129 Complete French copy review for all critical workflows in `src/i18n/messages/fr.json`
+- [X] T118 [P] Validate quickstart smoke test and update `specs/001-ar-recovery-platform/quickstart.md`
+- [X] T119 Run all migration rollback validations and record results in `supabase/migrations/README.md`
+- [X] T120 Run full tenant-isolation and authorization test suite in `tests/rls/`
+- [X] T121 Run full integration test suite in `tests/integration/`
+- [X] T122 Run full Playwright suite in `tests/e2e/`
+- [X] T123 Run typecheck, lint, and formatting checks through `package.json`
+- [X] T124 Verify no direct Supabase client calls exist outside `src/services/`, `src/repositories/`, `src/actions/`, `src/supabase/`, and `app/api/` using `tests/integration/no-ui-supabase-calls.test.ts`
+- [X] T125 Verify no role, tenant, cabinet, entitlement, or session state is persisted in localStorage using `tests/e2e/no-sensitive-localstorage.spec.ts`
+- [X] T126 Verify n8n is not used as a synchronous CRUD backend using `tests/integration/no-n8n-crud.test.ts`
+- [X] T127 Capture desktop and mobile screenshots for dashboard, invoice list, import flow, reminders, legal-risk alerts, and reports in `tests/e2e/screenshots/`
+- [X] T128 Complete Arabic RTL review for all critical workflows in `src/i18n/messages/ar.json`
+- [X] T129 Complete French copy review for all critical workflows in `src/i18n/messages/fr.json`
 
 ---
 
