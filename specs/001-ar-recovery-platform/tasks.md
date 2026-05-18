@@ -228,21 +228,21 @@ description: "Task list for eFacturation accounts receivable recovery platform"
 
 ### Tests for User Story 6
 
-- [ ] T106 [P] [US6] Add report authorization integration test in `tests/integration/generate-report.route.test.ts`
-- [ ] T107 [P] [US6] Add report content unit test in `tests/unit/monthly-report.service.test.ts`
-- [ ] T108 [P] [US6] Add E2E test for monthly report generation in `tests/e2e/monthly-report.spec.ts`
-- [ ] T109 [P] [US6] Add storage signed URL access test in `tests/integration/report-storage.test.ts`
+- [X] T106 [P] [US6] Add report authorization integration test in `tests/integration/generate-report.route.test.ts`
+- [X] T107 [P] [US6] Add report content unit test in `tests/unit/monthly-report.service.test.ts`
+- [X] T108 [P] [US6] Add E2E test for monthly report generation in `tests/e2e/monthly-report.spec.ts`
+- [X] T109 [P] [US6] Add storage signed URL access test in `tests/integration/report-storage.test.ts`
 
 ### Implementation for User Story 6
 
-- [ ] T110 [US6] Implement report repository queries in `src/repositories/report.repository.ts`
-- [ ] T111 [US6] Implement monthly report aggregation service in `src/services/monthly-report.service.ts`
-- [ ] T112 [US6] Implement React PDF document component in `components/features/reports/monthly-report-document.tsx`
-- [ ] T113 [US6] Implement report generation route handler in `app/api/export/[companyId]/route.ts`
-- [ ] T114 [US6] Implement report generation UI in `components/features/reports/report-generator.tsx`
-- [ ] T115 [US6] Implement reports page in `app/[locale]/dashboard/[companyId]/reports/page.tsx`
-- [ ] T116 [US6] Add private reports bucket policy notes in `supabase/policies/storage-reports.sql`
-- [ ] T117 [US6] Add French and Arabic report labels in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
+- [X] T110 [US6] Implement report repository queries in `src/repositories/report.repository.ts`
+- [X] T111 [US6] Implement monthly report aggregation service in `src/services/monthly-report.service.ts`
+- [X] T112 [US6] Implement React PDF document component in `components/features/reports/monthly-report-document.tsx`
+- [X] T113 [US6] Implement report generation route handler in `app/api/export/[companyId]/route.ts`
+- [X] T114 [US6] Implement report generation UI in `components/features/reports/report-generator.tsx`
+- [X] T115 [US6] Implement reports page in `app/[locale]/dashboard/[companyId]/reports/page.tsx`
+- [X] T116 [US6] Add private reports bucket policy notes in `supabase/policies/storage-reports.sql`
+- [X] T117 [US6] Add French and Arabic report labels in `src/i18n/messages/fr.json` and `src/i18n/messages/ar.json`
 
 **Checkpoint**: Reports are tenant-scoped, private, auditable, and usable by the cabinet.
 
