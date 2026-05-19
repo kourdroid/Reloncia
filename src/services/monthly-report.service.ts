@@ -1,4 +1,4 @@
-import { createAdminClient } from "../../supabase/admin";
+import { createAdminClient } from "../supabase/admin";
 import {
   fetchMonthlyReportData,
   type MonthlyReportData,

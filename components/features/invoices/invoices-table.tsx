@@ -24,7 +24,7 @@ import { Badge } from "@/components/ui/badge";
 import { InvoiceTableRow } from "@/src/types/ui";
 import { formatMAD, formatDateFr } from "@/src/lib/formatters";
 import { getStatusBadgeVariant } from "@/src/lib/status";
-import { ArrowUpDown, AlertCircle } from "lucide-react";
+import { ArrowUpDown, AlertCircle, Search } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface InvoicesTableProps {
@@ -43,6 +43,7 @@ export const columns: ColumnDef<InvoiceTableRow>[] = [
       return (
         <Button
           variant="ghost"
+          className="-ml-4"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Client
@@ -53,10 +54,10 @@ export const columns: ColumnDef<InvoiceTableRow>[] = [
   },
   {
     accessorKey: "amountMAD",
-    header: "Montant TTC",
+    header: () => <div className="text-right">Montant TTC</div>,
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amountMAD"));
-      return <div className="font-medium">{formatMAD(amount)}</div>;
+      return <div className="font-medium text-right">{formatMAD(amount)}</div>;
     },
   },
   {
@@ -66,13 +67,13 @@ export const columns: ColumnDef<InvoiceTableRow>[] = [
   },
   {
     accessorKey: "age",
-    header: "Retard (Jours)",
+    header: () => <div className="text-right">Retard (Jours)</div>,
     cell: ({ row }) => {
       const age = parseInt(row.getValue("age"));
       return (
-        <span className={age > 60 ? "text-destructive font-bold" : age > 0 ? "text-amber-600" : ""}>
+        <div className={`text-right ${age > 60 ? "text-destructive font-bold" : age > 0 ? "text-amber-600" : ""}`}>
           {age > 0 ? `+${age}` : "-"}
-        </span>
+        </div>
       );
     },
   },
@@ -127,12 +128,15 @@ export function InvoicesTable({ data, onRowClick }: InvoicesTableProps) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <Input
-          placeholder="Rechercher..."
-          value={globalFilter ?? ""}
-          onChange={(event) => setGlobalFilter(event.target.value)}
-          className="max-w-sm"
-        />
+        <div className="relative w-full max-w-sm">
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Rechercher..."
+            value={globalFilter ?? ""}
+            onChange={(event) => setGlobalFilter(event.target.value)}
+            className="pl-9"
+          />
+        </div>
         {/* We can add bulk actions here later */}
       </div>
       <div className="rounded-md border bg-card">
