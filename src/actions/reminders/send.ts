@@ -1,9 +1,9 @@
 "use server";
 
 import { createClient } from "../../supabase/server";
-import { reminderSchema } from "../validation/ar-recovery";
-import { dispatchReminder } from "../services/n8n-dispatcher.service";
-import { logReminderEvent } from "../services/reminder.service";
+import { reminderSchema } from "../../validation/ar-recovery";
+import { dispatchReminder } from "../../services/n8n-dispatcher.service";
+import { logReminderEvent } from "../../services/reminder.service";
 
 export async function sendReminderAction(formData: FormData) {
   const supabase = await createClient();
