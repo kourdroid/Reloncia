@@ -188,11 +188,11 @@ export default async function LocaleRootPage({ params }: { params: Promise<{ loc
               <p className="reloncia-eyebrow"><span />{copy.eyebrow}</p>
               <h1>{copy.title}</h1>
               <p className="reloncia-intro">{copy.intro}</p>
-              <div className="reloncia-hero-actions">
+              <div className="reloncia-hero-actions mb-6">
                 <a className="reloncia-button reloncia-button--lime" href={demoHref}>{copy.primary}<ArrowUpRight /></a>
                 <a className="reloncia-text-link" href="#method">{copy.secondary}<ChevronRight /></a>
               </div>
-              <p className="reloncia-note"><Sparkles />{copy.note}</p>
+              <p className="reloncia-note mt-10"><Sparkles />{copy.note}</p>
             </div>
 
             <div className="reloncia-preview" aria-label={copy.dashboardLabel}>

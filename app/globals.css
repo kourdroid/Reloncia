@@ -132,7 +132,7 @@
 .reloncia-language { color: rgba(244,243,236,.72); }
 .reloncia a.reloncia-nav-cta { align-items: center; background: var(--reloncia-lime); border-radius: 999px; color: var(--reloncia-ink); display: inline-flex; font-size: .8rem; font-weight: 800; min-height: 44px; padding: 11px 17px; transition: transform 180ms ease-out, background 180ms ease-out; }
 .reloncia-nav-cta:hover, .reloncia-button--lime:hover { background: #e4ff74; transform: translateY(-2px); }
-.reloncia-hero-grid { align-items: center; display: grid; gap: 42px; grid-template-columns: .92fr 1.08fr; min-height: 665px; padding: 56px 0; }
+.reloncia-hero-grid { align-items: center; display: grid; gap: 42px; grid-template-columns: .92fr 1.08fr; min-height: 665px; padding: 56px 0; margin-bottom: 20px;}
 .reloncia-hero-copy { max-width: 540px; }
 .reloncia-eyebrow, .reloncia-section-label { align-items: center; color: var(--reloncia-lime); display: flex; font-size: .73rem; font-weight: 800; gap: 9px; letter-spacing: .08em; text-transform: uppercase; }
 .reloncia-eyebrow span { background: var(--reloncia-lime); display: inline-block; height: 2px; width: 25px; }
@@ -145,7 +145,7 @@
 .reloncia-text-link { align-items: center; color: rgba(244,243,236,.88); display: inline-flex; font-size: .88rem; font-weight: 700; gap: 3px; min-height: 44px; }
 .reloncia-text-link:hover { color: var(--reloncia-lime); }
 .reloncia-text-link svg { height: 16px; width: 16px; }
-.reloncia-note { align-items: center; color: rgba(244,243,236,.59); display: flex; font-size: .77rem; gap: 7px; line-height: 1.5; margin-top: 55px; max-width: 44ch; }
+.reloncia-note { align-items: center; color: rgba(244,243,236,.59); display: flex; font-size: .77rem; gap: 7px; line-height: 1.5; margin-top: 55px; max-width: 44ch; margin-bottom: 24px;}
 .reloncia-note svg { color: var(--reloncia-lime); flex: 0 0 auto; height: 14px; width: 14px; }
 .reloncia-preview { background: var(--reloncia-paper); border-radius: 14px; box-shadow: 10px 10px 0 rgba(215,255,63,.8); color: var(--reloncia-copy); overflow: hidden; transform: rotate(1.5deg); }
 .reloncia-preview-topline { align-items: center; background: var(--reloncia-lime); display: flex; font-size: .7rem; font-weight: 800; justify-content: space-between; letter-spacing: .07em; padding: 10px 16px; text-transform: uppercase; }
