@@ -1,348 +1,274 @@
+import type { Metadata } from "next";
+import { headers } from "next/headers";
 import {
-  AlertTriangle,
-  ArrowRight,
-  BarChart3,
-  Building2,
-  CheckCircle2,
+  ArrowUpRight,
+  BadgeCheck,
+  ChevronRight,
+  CircleDollarSign,
+  Clock3,
+  Download,
+  FileCheck2,
   FileSpreadsheet,
-  FileText,
-  MailCheck,
-  Receipt,
-  ShieldCheck,
+  Mail,
+  MessageSquareText,
+  ScanLine,
+  Sparkles,
+  TrendingUp,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "@/src/i18n/routing";
 
-const metrics = [
-  { label: "Impayés consolidés", value: "1,28M MAD" },
-  { label: "Factures > 30 jours", value: "84" },
-  { label: "Risques 69-21", value: "19" },
-];
+type Locale = "fr" | "en" | "ar";
 
-const workflows = [
-  {
-    title: "Importer",
-    description: "Excel, CSV et balances âgées sont contrôlés avant validation.",
-    icon: FileSpreadsheet,
+const content = {
+  fr: {
+    language: "EN",
+    languageHref: "/en",
+    nav: ["La méthode", "Le résultat", "Pour qui"],
+    contact: "Demander une démo",
+    eyebrow: "Recouvrement augmenté · Maroc",
+    title: "Les impayés ne devraient jamais être une zone d’ombre.",
+    intro:
+      "Reloncia donne aux cabinets comptables une vue claire, documentée et actionnable de chaque créance client.",
+    primary: "Demander une démo",
+    secondary: "Découvrir la méthode",
+    note: "Un aperçu produit — conçu pour les cabinets comptables et PME marocaines.",
+    dashboardLabel: "Aperçu produit",
+    dashboardTitle: "Portefeuille à traiter",
+    dashboardMeta: "18 sociétés · Mai 2026",
+    outstanding: "Encours à suivre",
+    overdue: "Échéances dépassées",
+    action: "À relancer cette semaine",
+    actions: ["Import vérifié", "Priorités claires", "Relances tracées"],
+    methodLabel: "Reloncia, en pratique",
+    proofTitle: "De l’information dispersée à une action qui laisse une trace.",
+    proofText:
+      "Une seule lecture de votre portefeuille suffit pour savoir où agir, avec qui, et pourquoi maintenant.",
+    flow: [
+      ["Centraliser", "Importez vos fichiers et contrôlez la qualité avant de les exploiter."],
+      ["Prioriser", "Faites émerger les montants, retards et échéances qui comptent vraiment."],
+      ["Documenter", "Gardez une preuve claire de chaque relance, rapport et décision."],
+    ],
+    resultTitle: "Un pilotage plus calme. Une trésorerie mieux défendue.",
+    resultText:
+      "Reloncia transforme le suivi des créances en rituel opérationnel pour les équipes qui veulent anticiper plutôt que rattraper.",
+    valueLabel: "La valeur, en un regard",
+    bento: {
+      portfolioTitle: "Une vue cabinet, société par société.",
+      portfolioText: "Repérez immédiatement où se concentre l’encours et ouvrez la bonne conversation client.",
+      riskTitle: "Les échéances critiques remontent avant l’urgence.",
+      riskText: "Montant, ancienneté et seuil 69-21 réunis dans une priorité lisible.",
+      timelineTitle: "Chaque relance devient une preuve.",
+      timelineText: "Canal, date, destinataire et résultat restent attachés à la facture.",
+      importTitle: "Vos fichiers deviennent exploitables.",
+      importText: "Colonnes rapprochées, doublons détectés, lignes contrôlées avant validation.",
+      reportTitle: "Le reporting est prêt à partager.",
+      reportText: "Une synthèse mensuelle claire pour le cabinet, la direction et le client.",
+      ready: "Données contrôlées",
+      report: "Rapport mai 2026",
+    },
+    audienceLabel: "Pour les professionnels du chiffre",
+    audienceTitle: "Pensé pour les équipes qui portent la confiance financière.",
+    audiences: ["Cabinets comptables", "Directions financières", "PME en croissance"],
+    finalTitle: "Faites de chaque impayé un plan d’action.",
+    finalText: "Voyez comment Reloncia peut structurer le suivi de vos créances.",
+    conversationLabel: "Commencer la conversation",
+    emailSubject: "Demande de démo Reloncia",
+    footer: "Reloncia · Recouvrement d’impayés, avec méthode.",
   },
-  {
-    title: "Prioriser",
-    description: "Les factures sont classées par ancienneté, montant et risque légal.",
-    icon: BarChart3,
+  en: {
+    language: "FR",
+    languageHref: "/fr",
+    nav: ["The method", "The outcome", "For whom"],
+    contact: "Request a demo",
+    eyebrow: "Smarter receivables · Morocco",
+    title: "Outstanding invoices should never be a blind spot.",
+    intro:
+      "Reloncia gives accounting firms a clear, documented and actionable view of every client receivable.",
+    primary: "Request a demo",
+    secondary: "Discover the method",
+    note: "A product preview — designed for Moroccan accounting firms and SMEs.",
+    dashboardLabel: "Product preview",
+    dashboardTitle: "Portfolio to act on",
+    dashboardMeta: "18 companies · May 2026",
+    outstanding: "Outstanding balance",
+    overdue: "Overdue invoices",
+    action: "To follow up this week",
+    actions: ["Checked import", "Clear priorities", "Tracked follow-ups"],
+    methodLabel: "Reloncia in practice",
+    proofTitle: "From scattered information to action with a record.",
+    proofText:
+      "One view of your portfolio is enough to know where to act, with whom, and why now.",
+    flow: [
+      ["Centralise", "Import files and check data quality before using it."],
+      ["Prioritise", "Surface the amounts, delays and deadlines that genuinely matter."],
+      ["Document", "Keep clear evidence of every follow-up, report and decision."],
+    ],
+    resultTitle: "Calmer operations. Better-defended cash flow.",
+    resultText:
+      "Reloncia turns receivables tracking into an operating rhythm for teams that want to anticipate, not catch up.",
+    valueLabel: "The value, at a glance",
+    bento: {
+      portfolioTitle: "A firm-wide view, company by company.",
+      portfolioText: "See where outstanding balances concentrate and open the right client conversation.",
+      riskTitle: "Critical deadlines surface before they become urgent.",
+      riskText: "Amount, ageing and Law 69-21 thresholds become one readable priority.",
+      timelineTitle: "Every follow-up becomes evidence.",
+      timelineText: "Channel, date, recipient and outcome remain attached to the invoice.",
+      importTitle: "Your files become usable data.",
+      importText: "Columns matched, duplicates detected and rows checked before confirmation.",
+      reportTitle: "Reporting is ready to share.",
+      reportText: "A clear monthly summary for the firm, finance team and client.",
+      ready: "Data checked",
+      report: "May 2026 report",
+    },
+    audienceLabel: "For finance professionals",
+    audienceTitle: "Made for teams trusted with financial clarity.",
+    audiences: ["Accounting firms", "Finance teams", "Growing SMEs"],
+    finalTitle: "Turn every outstanding invoice into a plan of action.",
+    finalText: "See how Reloncia can structure your receivables follow-up.",
+    conversationLabel: "Start the conversation",
+    emailSubject: "Reloncia demo request",
+    footer: "Reloncia · Receivables recovery, with method.",
   },
-  {
-    title: "Relancer",
-    description: "Chaque email ou WhatsApp laisse une preuve horodatée.",
-    icon: MailCheck,
-  },
-  {
-    title: "Reporter",
-    description: "Un rapport mensuel par société synthétise le recouvrement.",
-    icon: FileText,
-  },
-];
+} as const;
 
-const features = [
-  {
-    title: "Pilotage cabinet multi-sociétés",
-    description:
-      "Une vue consolidée pour identifier les sociétés et clients qui concentrent le plus de risque.",
-  },
-  {
-    title: "Balance âgée opérationnelle",
-    description:
-      "Regroupement 0-30, 30-60 et 60+ jours avec montants en MAD et priorités de relance.",
-  },
-  {
-    title: "Suivi Law 69-21",
-    description:
-      "Alertes sur les factures qui approchent ou dépassent le seuil de délai de paiement.",
-  },
-  {
-    title: "Historique de relance",
-    description: "Journal complet par facture avec canal, destinataire, date, statut et résultat.",
-  },
-  {
-    title: "Import contrôlé",
-    description:
-      "Mapping de colonnes, détection de doublons et validation avant création des factures.",
-  },
-  {
-    title: "Accès cabinet et PME",
-    description:
-      "Les données restent cloisonnées par société avec accès délégué au cabinet comptable.",
-  },
-];
-
-export default function LocaleRootPage() {
-  return (
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="relative isolate min-h-[92svh] overflow-hidden border-b bg-background">
-        <div className="absolute inset-0 -z-10 opacity-95">
-          <DashboardBackdrop />
-        </div>
-        <div className="absolute inset-0 -z-10 bg-background/72" />
-
-        <header className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-3" aria-label="eFacturation">
-            <span className="flex size-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <Receipt />
-            </span>
-            <span className="text-sm font-semibold">eFacturation</span>
-          </Link>
-          <nav className="flex items-center gap-2">
-            <Button variant="ghost" asChild>
-              <Link href="/login">Connexion</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/onboarding">
-                <span className="sm:hidden">Démo</span>
-                <span className="hidden sm:inline">Demander une démo</span>
-              </Link>
-            </Button>
-          </nav>
-        </header>
-
-        <div className="mx-auto flex min-h-[calc(92svh-4rem)] w-full max-w-7xl items-center px-4 pb-16 pt-10 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex flex-wrap items-center gap-2">
-              <Badge variant="secondary">SaaS recouvrement</Badge>
-              <Badge variant="outline">Cabinets comptables · PME marocaines</Badge>
-            </div>
-            <h1 className="max-w-3xl text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-6xl">
-              eFacturation
-            </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-              La plateforme qui transforme les factures impayées en plan d’action clair: exposition
-              cabinet, relances documentées, alertes Law 69-21 et rapports mensuels prêts à
-              partager.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" asChild>
-                <Link href="/onboarding">
-                  Planifier une démo
-                  <ArrowRight />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/dashboard">Voir le tableau de bord</Link>
-              </Button>
-            </div>
-            <div className="mt-10 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
-              {metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-md border bg-background/85 p-4 shadow-sm"
-                >
-                  <div className="text-2xl font-semibold">{metric.value}</div>
-                  <div className="mt-1 text-sm text-muted-foreground">{metric.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b bg-muted/30 py-12">
-        <div className="mx-auto grid w-full max-w-7xl gap-4 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
-          {workflows.map((item) => (
-            <div key={item.title} className="rounded-md border bg-background p-5">
-              <item.icon className="mb-4 text-primary" />
-              <h2 className="text-base font-semibold">{item.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-20">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <Badge variant="outline">Pourquoi maintenant</Badge>
-            <h2 className="mt-4 text-3xl font-semibold leading-tight">
-              Les cabinets ne peuvent plus piloter le recouvrement avec des fichiers dispersés.
-            </h2>
-            <p className="mt-4 leading-7 text-muted-foreground">
-              eFacturation centralise les créances, expose les risques et garde une trace
-              exploitable de chaque action de recouvrement.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <Card key={feature.title}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                  <CardDescription>{feature.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y bg-muted/30 py-20">
-        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-          <div>
-            <Badge variant="secondary">Démo guidée</Badge>
-            <h2 className="mt-4 text-3xl font-semibold leading-tight">
-              Un scénario clair pour convaincre un cabinet en quinze minutes.
-            </h2>
-            <p className="mt-4 leading-7 text-muted-foreground">
-              Commencez par le portefeuille cabinet, ouvrez une société à risque, sélectionnez les
-              factures critiques, puis montrez l’historique de relance et le rapport mensuel.
-            </p>
-          </div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Parcours de démonstration</CardTitle>
-              <CardDescription>Les écrans qui portent la valeur produit.</CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-4 sm:grid-cols-2">
-              {[
-                "Risque consolidé cabinet",
-                "Balance âgée par société",
-                "Alertes Law 69-21",
-                "Import Excel contrôlé",
-                "Relances email / WhatsApp",
-                "Rapport mensuel PDF",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="text-primary" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-20">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:px-6 md:flex-row md:items-center lg:px-8">
-          <div>
-            <h2 className="text-3xl font-semibold">Prêt à montrer eFacturation?</h2>
-            <p className="mt-3 max-w-2xl text-muted-foreground">
-              Utilisez la démo pour vendre le bénéfice: moins de retard caché, plus de preuves de
-              relance, et une meilleure visibilité sur le risque client.
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <Button variant="outline" asChild>
-              <Link href="/login">Connexion</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/onboarding">Demander une démo</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+function getContent(locale: string) {
+  return content[locale === "en" ? "en" : "fr"];
 }
 
-function DashboardBackdrop() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const copy = getContent(locale);
+  const requestHeaders = await headers();
+  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
+  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  const metadataBase = new URL(`${protocol}://${host}`);
+
+  return {
+    metadataBase,
+    title: "Reloncia — Receivables recovery, with method",
+    description: copy.intro,
+    alternates: { canonical: `/${locale === "en" ? "en" : "fr"}` },
+    openGraph: {
+      type: "website",
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      title: "Reloncia",
+      description: copy.title,
+      images: [{ url: "/og-reloncia.png", width: 1200, height: 630, alt: "Reloncia product preview" }],
+    },
+    twitter: { card: "summary_large_image", title: "Reloncia", description: copy.title, images: ["/og-reloncia.png"] },
+  };
+}
+
+export default async function LocaleRootPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const copy = getContent(locale);
+  const demoHref = `mailto:contact@kourchal.com?subject=${encodeURIComponent(copy.emailSubject)}`;
+
   return (
-    <div className="absolute inset-y-16 right-[-6rem] hidden w-[70rem] rotate-[-2deg] lg:block">
-      <div className="rounded-md border bg-background shadow-2xl">
-        <div className="flex h-14 items-center justify-between border-b px-5">
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Building2 />
-            Portefeuille cabinet
-          </div>
-          <div className="flex items-center gap-3 text-xs text-muted-foreground">
-            <span>Casablanca</span>
-            <span>18 sociétés</span>
-            <span>Mai 2026</span>
-          </div>
-        </div>
-        <div className="grid grid-cols-[15rem_1fr]">
-          <aside className="border-r bg-muted/40 p-4">
-            <div className="mb-6 text-xs font-medium text-muted-foreground">Navigation</div>
-            {["Pilotage cabinet", "Sociétés clientes", "Factures", "Relances", "Rapports"].map(
-              (item, index) => (
-                <div
-                  key={item}
-                  className={`mb-2 rounded-md px-3 py-2 text-sm ${
-                    index === 0 ? "bg-background font-medium shadow-sm" : "text-muted-foreground"
-                  }`}
-                >
-                  {item}
-                </div>
-              ),
-            )}
-            <div className="mt-8 rounded-md border bg-background p-3">
-              <div className="flex items-center justify-between gap-2 text-xs font-medium">
-                <span>Risque 69-21</span>
-                <span className="rounded-full bg-destructive px-2 py-0.5 text-destructive-foreground">
-                  19
-                </span>
-              </div>
-              <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                À traiter sous 10 jours
-              </p>
+    <main className="reloncia">
+      <section className="reloncia-hero">
+        <div className="reloncia-shell">
+          <header className="reloncia-nav">
+            <a className="reloncia-wordmark" href={locale === "en" ? "/en" : "/fr"} aria-label="Reloncia home">
+              <span aria-hidden="true">R</span>eloncia
+            </a>
+            <nav aria-label="Primary navigation">
+              <a href="#method">{copy.nav[0]}</a>
+              <a href="#outcome">{copy.nav[1]}</a>
+              <a href="#teams">{copy.nav[2]}</a>
+            </nav>
+            <div className="reloncia-nav-actions">
+              <a className="reloncia-language" href={copy.languageHref} lang={copy.language.toLowerCase()}>{copy.language}</a>
+              <a className="reloncia-nav-cta" href={demoHref}>{copy.contact}</a>
             </div>
-          </aside>
-          <div className="p-5">
-            <div className="mb-5 flex items-center justify-between">
-              <div>
-                <div className="text-xs text-muted-foreground">Vue consolidée</div>
-                <div className="text-2xl font-semibold">Pilotage des impayés</div>
+          </header>
+
+          <div className="reloncia-hero-grid">
+            <div className="reloncia-hero-copy">
+              <p className="reloncia-eyebrow"><span />{copy.eyebrow}</p>
+              <h1>{copy.title}</h1>
+              <p className="reloncia-intro">{copy.intro}</p>
+              <div className="reloncia-hero-actions">
+                <a className="reloncia-button reloncia-button--lime" href={demoHref}>{copy.primary}<ArrowUpRight /></a>
+                <a className="reloncia-text-link" href="#method">{copy.secondary}<ChevronRight /></a>
               </div>
-              <div className="rounded-md border px-3 py-2 text-sm">Exporter rapport</div>
+              <p className="reloncia-note"><Sparkles />{copy.note}</p>
             </div>
-            <div className="grid grid-cols-4 gap-3">
-              {[
-                ["Total impayé", "1.284.500 MAD", ShieldCheck],
-                ["Factures > 30 j", "84", AlertTriangle],
-                ["Risque 69-21", "19", AlertTriangle],
-                ["Relances du jour", "31", MailCheck],
-              ].map(([label, value, Icon]) => (
-                <div
-                  key={label as string}
-                  className="rounded-md border bg-background p-4 shadow-sm"
-                >
-                  <Icon className="mb-4 text-muted-foreground" />
-                  <div className="text-xs text-muted-foreground">{label as string}</div>
-                  <div className="mt-1 text-xl font-semibold">{value as string}</div>
+
+            <div className="reloncia-preview" aria-label={copy.dashboardLabel}>
+              <div className="reloncia-preview-topline"><span>{copy.dashboardLabel}</span><BadgeCheck /></div>
+              <div className="reloncia-preview-heading"><div><p>{copy.dashboardTitle}</p><span>{copy.dashboardMeta}</span></div><span className="reloncia-preview-export" aria-hidden="true">PDF</span></div>
+              <div className="reloncia-balance"><span>{copy.outstanding}</span><strong>1 284 500 <small>MAD</small></strong><div><i /><i /><i /><i /><i /></div></div>
+              <div className="reloncia-preview-lower">
+                <div className="reloncia-invoice-list">
+                  <p>{copy.overdue}</p>
+                  {["FAC-2026-1182", "FAC-2026-0934", "FAC-2026-0771"].map((invoice, index) => <div key={invoice}><span><b>{invoice}</b><small>{copy.actions[index]}</small></span><em>J-{6 + index * 3}</em></div>)}
                 </div>
-              ))}
-            </div>
-            <div className="mt-5 grid grid-cols-[1fr_20rem] gap-4">
-              <div className="rounded-md border bg-background p-4">
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="font-semibold">Seuil Law 69-21 à surveiller</div>
-                  <Badge variant="destructive">3 factures</Badge>
-                </div>
-                {["FAC-2026-1182", "FAC-2026-0934", "FAC-2026-0771"].map((invoice, index) => (
-                  <div
-                    key={invoice}
-                    className="mb-3 flex items-center justify-between rounded-md border p-3"
-                  >
-                    <div>
-                      <div className="text-sm font-medium">{invoice}</div>
-                      <div className="text-xs text-muted-foreground">Client à relancer</div>
-                    </div>
-                    <span className="rounded-full bg-destructive px-2 py-1 text-xs text-destructive-foreground">
-                      J-{6 + index * 3}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="rounded-md border bg-background p-4">
-                <div className="mb-4 font-semibold">Sociétés à traiter</div>
-                {["Atlas Distribution", "Medilog Services", "NorthBuild SARL"].map((company) => (
-                  <div key={company} className="mb-4 border-b pb-3 last:mb-0 last:border-b-0">
-                    <div className="text-sm font-medium">{company}</div>
-                    <div className="mt-1 text-xs text-muted-foreground">Créances en retard</div>
-                  </div>
-                ))}
+                <div className="reloncia-preview-aside"><p>{copy.action}</p><strong>19</strong><span>3&nbsp;{copy.actions[1].toLowerCase()}</span><div className="reloncia-aside-icons"><Mail /><FileCheck2 /><CircleDollarSign /></div></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="reloncia-proof" id="method">
+        <div className="reloncia-shell reloncia-proof-grid">
+          <div><p className="reloncia-section-label">{copy.methodLabel}</p><h2>{copy.proofTitle}</h2></div>
+          <p className="reloncia-proof-text">{copy.proofText}</p>
+        </div>
+        <div className="reloncia-flow reloncia-shell">
+          {copy.flow.map(([title, description], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}
+        </div>
+      </section>
+
+      <section className="reloncia-outcomes" id="outcome">
+        <div className="reloncia-shell">
+          <div className="reloncia-outcome-head"><div><p className="reloncia-section-label">{copy.valueLabel}</p><h2>{copy.resultTitle}</h2></div><p>{copy.resultText}</p></div>
+          <div className="reloncia-bento">
+            <article className="reloncia-bento-card reloncia-bento-portfolio">
+              <div className="reloncia-bento-icon"><TrendingUp /></div>
+              <h3>{copy.bento.portfolioTitle}</h3>
+              <p>{copy.bento.portfolioText}</p>
+              <div className="reloncia-company-bars" aria-hidden="true">
+                {[84, 62, 43].map((value, index) => <div key={value}><span>{["Atlas Distribution", "Medilog Services", "NorthBuild SARL"][index]}</span><i><b style={{ width: `${value}%` }} /></i><em>{value}%</em></div>)}
+              </div>
+            </article>
+            <article className="reloncia-bento-card reloncia-bento-risk">
+              <div className="reloncia-bento-icon"><Clock3 /></div>
+              <span className="reloncia-risk-day">J-6</span>
+              <h3>{copy.bento.riskTitle}</h3>
+              <p>{copy.bento.riskText}</p>
+            </article>
+            <article className="reloncia-bento-card reloncia-bento-timeline">
+              <div className="reloncia-bento-icon"><MessageSquareText /></div>
+              <h3>{copy.bento.timelineTitle}</h3>
+              <p>{copy.bento.timelineText}</p>
+              <div className="reloncia-mini-timeline" aria-hidden="true"><span><i />E-mail · 09:42</span><span><i />WhatsApp · 14:10</span><span><i />Réponse · 16:28</span></div>
+            </article>
+            <article className="reloncia-bento-card reloncia-bento-import">
+              <div className="reloncia-bento-icon"><ScanLine /></div>
+              <span className="reloncia-data-ready"><FileCheck2 />{copy.bento.ready}</span>
+              <h3>{copy.bento.importTitle}</h3>
+              <p>{copy.bento.importText}</p>
+              <div className="reloncia-file-chip"><FileSpreadsheet /><span>balance_agee_mai.xlsx</span><b>128</b></div>
+            </article>
+            <article className="reloncia-bento-card reloncia-bento-report">
+              <div className="reloncia-report-copy"><div className="reloncia-bento-icon"><Download /></div><h3>{copy.bento.reportTitle}</h3><p>{copy.bento.reportText}</p></div>
+              <div className="reloncia-report-sheet" aria-hidden="true"><span>RELONCIA</span><strong>{copy.bento.report}</strong><i /><i /><i /><div><b /><b /><b /><b /></div></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="reloncia-teams" id="teams">
+        <div className="reloncia-shell"><p className="reloncia-section-label">{copy.audienceLabel}</p><h2>{copy.audienceTitle}</h2><div>{copy.audiences.map((audience) => <span key={audience}>{audience}</span>)}</div></div>
+      </section>
+
+      <section className="reloncia-final">
+        <div className="reloncia-shell"><div><p className="reloncia-section-label">{copy.conversationLabel}</p><h2>{copy.finalTitle}</h2><p>{copy.finalText}</p></div><a className="reloncia-button reloncia-button--dark" href={demoHref}>{copy.primary}<Mail /></a></div>
+      </section>
+
+      <footer className="reloncia-footer"><div className="reloncia-shell"><span className="reloncia-wordmark"><b>R</b>eloncia</span><p>{copy.footer}</p><a href="mailto:contact@kourchal.com">contact@kourchal.com</a></div></footer>
+    </main>
   );
 }

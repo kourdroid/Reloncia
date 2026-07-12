@@ -6,7 +6,7 @@ export default createMiddleware(routing);
 export const config = {
   matcher: [
     "/",
-    "/(fr|ar)/:path*",
+    "/(fr|en|ar)/:path*",
     "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml).*)",
   ],
 };
